@@ -1,0 +1,2 @@
+# BSO
+Bosnian Science olympiad
