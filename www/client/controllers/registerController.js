@@ -102,7 +102,7 @@
 
        $scope.up = {};
            $scope.up.submit = function(){ //function to call on form submit
-               console.log( $scope.up.file);
+               console.log("file: ", $scope.up.file);
                if ($scope.up.upload_form.file.$valid && $scope.up.file) { //check if from is valid
                    $scope.up.upload($scope.up.file); //call upload function
                }else{
@@ -115,6 +115,7 @@
                    url: '/api/upload', //webAPI exposed to upload the file
                    data:{file:file} //pass file as data, should be user ng-model
                }).then(function (resp) { //upload function returns a promise
+                   console.log("resp.data:", resp.data);
                    if(resp.data.error_code === 0){ //validate success
                        //$window.alert('Success ' /*+ resp.config.data.file.name */+ 'uploaded. Response: ');
                        $scope.fileUploaded = true;
