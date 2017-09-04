@@ -11,9 +11,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "angular": "^1.6.2",
-    "angular-route": "^1.6.2",
-    "angular-ui-router": "^1.0.3",
     "bcryptjs": "*",
     "body-parser": "^1.17.1",
     "cors": "*",
@@ -24,5 +21,8 @@
     "passport-jwt": "*",
     "multer": "*",
     "random-key": "*"
-  }
+  },
+"engines":{
+    "node": "8.4.0"
+}
 }
