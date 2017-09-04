@@ -1,0 +1,123 @@
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="bsoApp">
+<head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+    <title>BSO</title>
+
+    <link href="common/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type='text/css'>
+
+    <!-- Custom Fonts -->
+    <link href="common/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Theme CSS -->
+    <link href="client/css/agency.css" rel="stylesheet"type='text/css'>
+    <link href="client/css/style.css" rel="stylesheet" type='text/css'/>
+
+    <!-- jQuery -->
+    <script src="common/vendor/jquery/jquery-3.1.1.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="common/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js" integrity="sha384-mE6eXfrb8jxl0rzJDBRanYqgBxtJ6Unn4/1F7q4xRRyIw7Vdg9jP4ycT7x1iVsgb" crossorigin="anonymous"></script>
+
+
+<script src="common/libs/angular.min.js"></script>
+<script src="common/libs/angular-route.min.js"></script>
+<script src="common/libs/ngStorage.min.js"></script>
+<script src="common/libs/angular-jwt.min.js"></script>
+<script src="common/libs/ng-file-upload.min.js"></script>
+<script src="common/libs/ng-file-upload-shim.min.js"></script>
+<script src="common/libs/angular-sanitize.min.js"></script>
+<!--Angular APP-->
+<script src="client/app.js"></script>
+<!--Angular SERVICES-->
+<script src="client/services/authService.js"></script>
+<script src="client/services/dataService.js"></script>
+
+<!--Angular CTRLS-->
+<script src="client/controllers/projectsController.js"></script>
+<script src="client/controllers/judgesController.js"></script>
+<script src="client/controllers/homeController.js"></script>
+<script src="client/controllers/registerController.js"></script>
+<script src="client/controllers/loginController.js"></script>
+<script src="client/controllers/myProjectController.js"></script>
+<script src="client/controllers/navController.js"></script>
+<!-- Contact Form JavaScript -->
+<script src="common/libs/jqBootstrapValidation.js"></script>
+<script src="client/libs/contact_me.js"></script>
+
+<!-- Theme JavaScript -->
+<script src="client/libs/agency.min.js"></script>
+
+
+</head>
+<!-- SET THE CONTROLLER AND GET ALL TODOS -->
+<body>
+<nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top" ng-controller="navController">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand page-scroll" href="#!/home/#page-top">{{activeCom.detailsEn.title}}</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="hidden">
+                    <a href="#page-top"></a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#!/home/#services">Categories</a>
+                </li>
+                <!--<li>
+                    <a class="page-scroll" href="#!/home/#portfolio">Portfolio</a>
+                </li>-->
+                <li>
+                    <a class="page-scroll" href="#!/home/#about">About</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#!/home/#team">Committee</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#!/home/#partners">Partners</a>
+                </li>
+                <!--<li>
+                    <a class="page-scroll" href="#!/home/#contact">Contact</a>
+                </li>-->
+                <li ng-if="!loggedin">
+                    <a  ng-href="#!/register">Register</a>
+                </li>
+                <li ng-if="!loggedin">
+                    <a  ng-href="#!/login">Log In</a>
+                </li>
+                <li ng-if="loggedin">
+                    <a ng-href="#!/myproject">My Project</a>
+                </li>
+                <li ng-if="loggedin">
+                    <a href="" target="_self" ng-click="logout()">Log Out</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+<div ng-view>
+</div>
+
+</body>
+</html>

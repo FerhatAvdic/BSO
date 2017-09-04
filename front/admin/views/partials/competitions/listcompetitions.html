@@ -1,0 +1,46 @@
+
+  <h1>Competitions</h1>
+  <button class="btn btn-default pull-left" ng-click="language='en'">EN</button><button class="btn btn-default pull-left" ng-click="language='nat'">BS</button>
+<div class="text-right"><button class="btn btn-success" data-toggle="modal" ng-click="crud.startNew()">Add Competition</button></div>
+
+<div class="table-responsive" ng-if="language==='nat'">
+  <table class="table table-hover">
+    <thead>
+        <th>Competition Title</th>
+        <th class="text-right">Options</th>
+    </thead>
+    <tbody>
+        <tr ng-repeat="com in list">
+            <div>
+                <td>{{com.detailsBs.title}}</td>
+                <td class="text-right">
+                    <button class="btn btn-default" ng-click="setAsActive(com)">Set Active</button>
+                    <button class="btn btn-info" ng-click="crud.startEdit(com)">Edit</button>
+                    <button class="btn btn-danger" ng-click="crud.deleteItem(com._id)">Delete</button>
+                </td>
+            </div>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="table-responsive" ng-if="language==='en'">
+    <table class="table table-hover">
+      <thead>
+          <th>Competition Title</th>
+          <th class="text-right">Options</th>
+      </thead>
+      <tbody>
+          <tr ng-repeat="com in list">
+              <div>
+                  <td>{{com.detailsEn.title}}</td>
+                  <td class="text-right">
+                    <button class="btn btn-default" ng-click="setAsActive(com)">Set Active</button>
+                      <button class="btn btn-info" ng-click="crud.startEdit(com)">Edit</button>
+                      <button class="btn btn-danger" ng-click="crud.deleteItem(com._id)">Delete</button>
+                  </td>
+              </div>
+          </tr>
+        </tbody>
+      </table>
+    </div>

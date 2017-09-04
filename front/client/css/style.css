@@ -1,0 +1,18 @@
+.navbar-custom {
+    background-color: #efefef;
+    padding: 10px 0;
+    -webkit-transition: padding .3s;
+    -moz-transition: padding .3s;
+    transition: padding .3s;
+    border: none;
+}
+
+.navbar-custom .nav li a{
+    color: #3841bc;
+}
+.navbar-custom .nav li a:hover{
+    color: #262e9b;
+}
+body{
+    padding-top: 70px;
+}

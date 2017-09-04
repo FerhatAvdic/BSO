@@ -1,0 +1,30 @@
+<ion-view view-title="judgepanel">
+  <ion-content>
+
+    <div style="height:100%;"><nav class="judge-nav royal">
+      <h4>Jury panel</h4>
+      <button class="btn-clear white" id="logout" ng-click="logout()">Log out</button>
+    </nav>
+
+
+    <div class="judge-body">
+      <div class="list list-inset">
+        <label class="item item-input">
+          <i class="icon ion-search placeholder-icon"></i>
+          <input type="text" placeholder="Search" ng-model="searchList.projectInfo.title">
+        </label>
+      </div>
+      <ul class="list">
+          <li class="item" ng-repeat="project in projects | orderBy:'projectInfo.title' | filter:searchList " ng-click="openProjectEvaluation(project)">
+            {{project.projectInfo.title}}
+          </li>
+      </ul>
+    </div>
+
+    <div class="tabs">
+      <a href="#/judge/guide" class="tab-item">Guide</a>
+      <a href="#judge/panel" class="tab-item">Projects</a>
+    </div>
+
+  </ion-content>
+</ion-view>

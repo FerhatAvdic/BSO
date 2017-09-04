@@ -1,0 +1,113 @@
+<div class="row">
+  <div class="col-md-offset-3 col-md-6">
+    <h2 class="text-center">Registration</h2>
+    <form name="up.upload_form">
+    <div class="text-left">
+      <fieldset>
+        <legend class="text-center">Login</legend>
+        <div class="form-group">
+            <label>Username: </label>
+            <input type="text" class="form-control" placeholder="Username" ng-model="newProject.username">
+        </div>
+        <div class="form-group">
+            <label>Password: </label>
+            <input type="password" class="form-control" placeholder="Password" ng-model="newProject.password">
+        </div>
+    </fieldset>
+    <fieldset>
+          <legend class="text-center">Project</legend>
+          <div class="form-group">
+              <label>Title: </label>
+              <input type="text" class="form-control" placeholder="Title" ng-model="newProject.projectInfo.title">
+          </div>
+          <label>Category: </label>:
+          <div class="form-group">
+            <select class="form-control" ng-model="newProject.projectInfo.categoryId">
+              <option value="" disabled selected>---Choose member type---</option>
+              <option ng-repeat="category in categories" ng-value="category._id">{{category.detailsEn.name}}</option>
+            </select>
+          </div>
+    <div class="form-group">
+      <label>Abstract: </label><textarea class="form-control" rows="3" type="text" ng-model="newProject.projectInfo.abstract"></textarea>
+    </div>
+    <div class="form-group">
+      <label>ResearchPaper: </label>
+      <input
+         type="file"
+         ngf-select
+         ng-model="up.file"
+         name="file"
+         ngf-pattern="'application/msword, application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document'"
+         accept="application/msword, application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+         ngf-max-size="20MB"
+         />
+      <i ng-show="up.upload_form.file.$error.required">*required</i><br>
+      <i ng-show="up.upload_form.file.$error.maxSize">File too large{{up.file.size / 1000000|number:1}}MB: max 20M</i>
+    </div>
+    <div class="form-group">
+        <label>School: </label>
+        <input type="text" class="form-control" placeholder="School" ng-model="newProject.projectInfo.school">
+    </div>
+    <div class="form-group">
+        <label>Year: </label>
+        <input type="text" class="form-control" placeholder="Year" ng-model="newProject.projectInfo.year">
+    </div>
+    <div class="form-group">
+        <label>City: </label>
+        <input type="text" class="form-control" placeholder="City" ng-model="newProject.projectInfo.city">
+    </div>
+    <div class="form-group">
+        <label>Video: </label>
+        <input type="text" class="form-control" placeholder="Video" ng-model="newProject.projectInfo.video">
+    </div>
+    </fieldset>
+    <legend class="text-center">Members</legend>
+    <fieldset ng-repeat="member in newProject.members track by $index">
+        <legend class="text-center">Member {{$index + 1}}</legend>
+        <button class="btn btn-danger" ng-click="removeMember($index)">Remove member</button>
+        <div class="form-group">
+            <label>Name: </label>
+            <input type="text" class="form-control" placeholder="Name" ng-model="newProject.members[$index].name">
+        </div>
+        <div class="form-group">
+            <label>Surname: </label>
+            <input type="text" class="form-control" placeholder="Surname" ng-model="newProject.members[$index].surname">
+        </div>
+          <div class="form-group">
+              <label>Email: </label>
+              <input type="email" class="form-control" placeholder="Email" ng-model="newProject.members[$index].email">
+          </div>
+          <div class="form-group">
+              <label>Phone Number: </label>
+              <input type="text" class="form-control" placeholder="Phone number" ng-model="newProject.members[$index].phone">
+          </div>
+          <div class="form-group">
+              <label>Gender: </label>
+              <div>
+                  <label class="radio-inline">
+                      <input type="radio" value="Male" ng-model="newProject.members[$index].gender"> Male
+                  </label>
+                  <label class="radio-inline">
+                      <input type="radio" value="Female" ng-model="newProject.members[$index].gender"> Female
+                  </label>
+              </div>
+          </div>
+          <div class="form-group">
+            <label>Tip člana:</label>
+            <select class="form-control" ng-model="newProject.members[$index].type">
+                <option value="" disabled>---Choose member type---</option>
+                <option ng-repeat="type in projectObj.memberTypes" ng-value="type.value">{{type.name}}</option>
+            </select>
+          </div>
+    </fieldset>
+    <button class="btn btn-success" ng-click="addMember()">Add member</button>
+    <br>
+
+
+    </div>
+    <button type="submit" class="btn btn-success btn-block" ng-click="registerProject()" data-dismiss="modal">Submit</button>
+    </form>
+    <br>
+    <br>
+  </div>
+</div>

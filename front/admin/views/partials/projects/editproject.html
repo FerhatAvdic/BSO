@@ -1,0 +1,103 @@
+<h2>Editing Project</h2>
+<div class="row">
+  <div class="col-md-12">
+    <form>
+  <div class="row text-left">
+    <div class="col-md-8">
+    <fieldset>
+      <select class="form-control text-center" ng-model="selectedCom._id" ng-change="getActiveCategories()">
+          <option value="" disabled>---Choose Competition---</option>
+          <option ng-repeat="com in comslight track by com._id" ng-value="com._id">{{com.detailsEn.title}}</option>
+      </select>
+          <legend class="text-center">Project</legend>
+          <div class="form-group">
+              <label>Title: </label>
+              <input type="text" class="form-control" placeholder="Title" ng-model="editingItem.projectInfo.title">
+          </div>
+          <label>Category: </label>:
+          <div class="form-group">
+            <select class="form-control" ng-model="editingItem.projectInfo.categoryId">
+              <option value="" disabled>---Choose category---</option>
+              <option ng-repeat="category in categories" ng-value="category._id">{{category.detailsBs.name}}</option>
+          </select>
+        </div>
+    <div class="form-group">
+      <label>Abstract: </label><textarea class="form-control" rows="10" type="text" ng-model="editingItem.projectInfo.abstract"></textarea>
+    </div>
+    <div class="form-group">
+      <label>ResearchPaper: </label><input type="file" ng-model="editingItem.projectInfo.researchPaper" />
+    </div>
+    <div class="form-group">
+        <label>School: </label>
+        <input type="text" class="form-control" placeholder="School" ng-model="editingItem.projectInfo.school">
+    </div>
+    <div class="form-group">
+        <label>Year: </label>
+        <input type="text" class="form-control" placeholder="Year" ng-model="editingItem.projectInfo.year">
+    </div>
+    <div class="form-group">
+        <label>City: </label>
+        <input type="text" class="form-control" placeholder="City" ng-model="editingItem.projectInfo.city">
+    </div>
+    <div class="form-group">
+        <label>Video: </label>
+        <input type="text" class="form-control" placeholder="Video" ng-model="editingItem.projectInfo.video">
+    </div>
+    </fieldset>
+    </div>
+  <div class="col-md-4">
+    <fieldset>
+      <legend class="text-center">Login</legend>
+      <div class="form-group">
+          <label>Username: </label>
+          <input type="text" class="form-control" placeholder="Username" ng-model="editingItem.username">
+      </div>
+  </fieldset>
+    <legend class="text-center">Members</legend>
+    <button class="btn btn-success" ng-click="addMember()">Add member</button>
+    <fieldset ng-repeat="member in editingItem.members track by $index">
+        <legend class="text-center">Member {{$index + 1}}</legend>
+        <button class="btn btn-danger" ng-click="removeMember($index)">Remove member</button>
+        <div class="form-group">
+            <label>Name: </label>
+            <input type="text" class="form-control" placeholder="Name" ng-model="editingItem.members[$index].name">
+        </div>
+        <div class="form-group">
+            <label>Surname: </label>
+            <input type="text" class="form-control" placeholder="Surname" ng-model="editingItem.members[$index].surname">
+        </div>
+          <div class="form-group">
+              <label>Email: </label>
+              <input type="email" class="form-control" placeholder="Email" ng-model="editingItem.members[$index].email">
+          </div>
+          <div class="form-group">
+              <label>Phone Number: </label>
+              <input type="text" class="form-control" placeholder="Phone number" ng-model="editingItem.members[$index].phone">
+          </div>
+          <div class="form-group">
+              <label>Gender: </label>
+              <div>
+                  <label class="radio-inline">
+                      <input type="radio" value="Male" ng-model="editingItem.members[$index].gender"> Male
+                  </label>
+                  <label class="radio-inline">
+                      <input type="radio" value="Female" ng-model="editingItem.members[$index].gender"> Female
+                  </label>
+              </div>
+          </div>
+          <div class="form-group">
+            <label>Tip člana:</label>
+            <select class="form-control" ng-model="editingItem.members[$index].type">
+                <option value="" disabled>---Choose member type---</option>
+                <option ng-repeat="type in projectObj.memberTypes" ng-value="type.value">{{type.name}}</option>
+            </select>
+          </div>
+    </fieldset>
+  </div>
+  </div>
+  </form>
+  </div>
+</div>
+
+  <div class="text-right"><button type="submit" class="btn btn-success" ng-click="crud.updateItem()">Submit</button>
+<button type="submit" class="btn btn-default" ng-click="crud.cancelEdit()">Cancel</button></div>

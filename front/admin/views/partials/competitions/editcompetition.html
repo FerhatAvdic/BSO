@@ -1,0 +1,62 @@
+<button class="btn btn-default pull-left" ng-click="language='en'">EN</button><button class="btn btn-default pull-left" ng-click="language='nat'">BS</button>
+<h2>Editing Competition</h2>
+  <form ng-if="language==='nat'">
+    <fieldset>
+      <div class="form-group">
+          <label>Title: </label>
+          <input type="text" class="form-control" placeholder="Title" ng-model="editingItem.detailsBs.title">
+      </div>
+      <div class="form-group">
+           <label>Description: </label>
+           <textarea class="form-control" rows="5" ng-model="editingItem.detailsBs.description"></textarea>
+      </div>
+      <div class="form-group">
+          <label>Logo: </label>
+          <input type="text" class="form-control" placeholder="Logo" ng-model="editingItem.detailsBs.logo">
+      </div>
+      <div class="form-group">
+           <label>About: </label>
+           <textarea class="form-control" rows="5" ng-model="editingItem.detailsBs.about"></textarea>
+      </div>
+      <div class="form-group">
+          <label>Partners: </label>
+           <textarea class="form-control" rows="5" ng-model="editingItem.detailsBs.partners"></textarea>
+      </div>
+      <div class="form-group">
+          <label>Comittee: </label>
+           <textarea class="form-control" rows="5" ng-model="editingItem.detailsBs.comittee"></textarea>
+      </div>
+</fieldset>
+</form>
+
+<form ng-if="language==='en'">
+  <fieldset>
+    <div class="form-group">
+        <label>Title: </label>
+        <input type="text" class="form-control" placeholder="Title" ng-model="editingItem.detailsEn.title">
+    </div>
+    <div class="form-group">
+         <label>Description: </label>
+         <textarea class="form-control" rows="5" ng-model="editingItem.detailsEn.description"></textarea>
+    </div>
+    <div class="form-group">
+        <label>Logo: </label>
+        <input type="text" class="form-control" placeholder="Logo" ng-model="editingItem.detailsEn.logo">
+    </div>
+    <div class="form-group">
+         <label>About: </label>
+         <textarea class="form-control" rows="5" ng-model="editingItem.detailsEn.about"></textarea>
+    </div>
+    <div class="form-group">
+        <label>Partners: </label>
+         <textarea class="form-control" rows="5" ng-model="editingItem.detailsEn.partners"></textarea>
+    </div>
+    <div class="form-group">
+        <label>Comittee: </label>
+         <textarea class="form-control" rows="5" ng-model="editingItem.detailsEn.comittee"></textarea>
+    </div>
+</fieldset>
+</form>
+
+  <div class="text-right"><button type="submit" class="btn btn-success" ng-click="crud.updateItem()">Submit</button>
+  <button type="submit" class="btn btn-default" ng-click="crud.cancelEdit()">Cancel</button></div>

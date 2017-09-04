@@ -1,0 +1,45 @@
+<ion-view view-title="evaluation">
+  <ion-content>
+
+    <nav class="judge-nav royal">
+      <h4>Project Evaluation</h4>
+      <button class="btn-clear white" id="logout" ng-click="logout()">Log out</button>
+      <button class="btn-clear white" id="backbtn" ng-click="location('/judge/panel')">Back</button>
+    </nav>
+      <div class="judge-body">
+          <div class="card">
+            <div class="item item-divider text-center">
+              {{evaluatingProject.projectInfo.title}}
+            </div>
+            <div class="item item-text-wrap">
+              <p>
+               {{evaluatingProject.projectInfo.abstract}}
+              </p>
+            </div>
+          </div>
+          <h4 ng-if="!grade" class="text-center padding">Evaluate</h4>
+          <h4 ng-if="grade" class="text-center padding">Graded successfully!</h4>
+          <div ng-if="!grade" class="list padding">
+            <label class="item item-input" ng-repeat="c in criteria">
+              <span class="input-label">{{c.max}} | {{c.nameEn}}: </span>
+              <input type="number" max="{{c.max}}" min="0" ng-model="c.value">
+            </label>
+          </div>
+          <div ng-if="grade" class="list padding" style="padding-bottom:50px;">
+            <label class="item item-input" ng-repeat="c in criteria">
+              <span class="input-label">{{c.max}} | {{c.nameEn}}: </span>
+              <input type="number" max="{{c.max}}" min="0" ng-model="c.value" disabled>
+            </label>
+          </div>
+          <button ng-if="!grade"class="button button-block button-energized" ng-click="submitEvaluation()" style="margin-bottom:100px;">
+            Submit
+          </button>
+      </div>
+
+      <div class="tabs">
+        <a href="#/judge/guide" class="tab-item">Guide</a>
+        <a href="#judge/panel" class="tab-item">Projects</a>
+      </div>
+
+  </ion-content>
+</ion-view>

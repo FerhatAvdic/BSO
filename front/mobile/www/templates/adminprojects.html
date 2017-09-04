@@ -1,0 +1,31 @@
+<ion-view view-title="adminprojects">
+  <ion-content>
+
+    <nav class="judge-nav assertive">
+      <h4>All projects</h4>
+      <button class="btn-clear white" id="logout" ng-click="logout()">Log out</button>
+    </nav>
+
+
+    <div class="judge-body">
+      <div class="list list-inset">
+        <label class="item item-input">
+          <i class="icon ion-search placeholder-icon"></i>
+          <input type="text" placeholder="Search" ng-model="searchList.projectInfo.title">
+        </label>
+      </div>
+      <ul class="list">
+          <li class="item" ng-repeat="project in projects | orderBy:'projectInfo.title' | filter:searchList " ng-click="openProject(project)">
+            {{project.projectInfo.title}}
+          </li>
+      </ul>
+    </div>
+
+    <div class="tabs">
+        <a href="#admin/panel" class="tab-item">Proggress</a>
+      <a href="#admin/projects" class="tab-item">All Projects</a>
+
+    </div>
+
+  </ion-content>
+</ion-view>

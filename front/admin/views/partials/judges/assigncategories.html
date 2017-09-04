@@ -1,0 +1,31 @@
+<h1>Assign Categories</h1>
+<select class="form-control text-center" ng-model="selectedCom._id" ng-change="getActiveCategories()">
+    <option value="" disabled>---Choose Competition---</option>
+    <option ng-repeat="com in comslight track by com._id" ng-value="com._id">{{com.detailsEn.title}}</option>
+</select>
+<div class="table-responsive">
+<table class="table table-hover">
+<thead>
+  <th>
+    Judge
+  </th>
+    <th ng-repeat="category in categories" class="text-center">
+        {{category.detailsEn.name}}
+    </th>
+</thead>
+<tbody>
+    <tr ng-repeat="(judgeIndex, judge)  in list">
+          <td>
+            {{judge.name+''+judge.surname}}
+          </td>
+            <td ng-repeat="(categoryIndex, category) in judge.newCategories" class="text-center">
+                <input type="checkbox" ng-model="category.checked">
+            </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="text-right">
+  <button class="btn btn-warning" ng-click="assignCategories()" >Submit</button>
+  <button class="btn btn-default" ng-click="cancelCategories()">Cancel</button>
+</div>

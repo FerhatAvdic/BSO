@@ -1,0 +1,23 @@
+<h2>Editing Judge</h2>
+<form>
+  <fieldset>
+    <div class="form-group">
+        <label>Name: </label>
+        <input type="text" class="form-control" placeholder="Name" ng-model="editingItem.name">
+    </div>
+    <div class="form-group">
+        <label>Surname: </label>
+        <input type="text" class="form-control" placeholder="Surname" ng-model="editingItem.surname">
+    </div>
+    <div class="form-group">
+        <label>Phone: </label>
+        <input type="text" class="form-control" placeholder="Phone" ng-model="editingItem.phone">
+    </div>
+    <div class="form-group">
+        <label>Email: </label>
+        <input type="text" class="form-control" placeholder="Email" ng-model="editingItem.email">
+    </div>
+  </fieldset>
+</form>
+<div class="text-right"><button  class="btn btn-success" ng-click="crud.updateItem()">Submit</button>
+<button class="btn btn-default" ng-click="crud.cancelEdit()">Cancel</button></div>

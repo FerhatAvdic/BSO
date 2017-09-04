@@ -1,0 +1,127 @@
+<h2>Adding new Project</h2>
+<div class="row">
+  <div class="col-md-12">
+    <form>
+  <div class="row text-left">
+    <div class="col-md-8">
+    <fieldset>
+      <select class="form-control text-center" ng-model="selectedCom._id" ng-change="getActiveCategories()">
+          <option value="" disabled>---Choose Competition---</option>
+          <option ng-repeat="com in comslight track by com._id" ng-value="com._id">{{com.detailsEn.title}}</option>
+      </select>
+          <legend class="text-center">Project</legend>
+          <div class="form-group">
+              <label>Title: </label>
+              <input type="text" class="form-control" placeholder="Title" ng-model="newItem.projectInfo.title">
+          </div>
+          <label>Category: </label>:
+          <div class="form-group">
+            <select class="form-control" ng-model="newItem.projectInfo.categoryId">
+              <option value="" disabled>---Choose category---</option>
+              <option ng-repeat="category in categories" ng-value="category._id">{{category.detailsBs.name}}</option>
+          </select>
+        </div>
+    <div class="form-group">
+      <label>Abstract: </label><textarea class="form-control" rows="10" type="text" ng-model="newItem.projectInfo.abstract"></textarea>
+    </div>
+    <div class="form-group">
+      <form name="up.upload_form">
+                Single Image with validations
+            <input
+               type="file"
+               ngf-select
+               ng-model="up.file"
+               name="file"
+               ngf-pattern="'application/msword, application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document'"
+               accept="application/msword, application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+               ngf-max-size="20MB"
+               />
+            Image thumbnail: <img style="width:100px;" ngf-thumbnail="up.file || '/thumb.jpg'"/>
+            <i ng-show="up.upload_form.file.$error.required">*required</i><br>
+            <i ng-show="up.upload_form.file.$error.maxSize">File too large
+            {{up.file.size / 1000000|number:1}}MB: max 20M</i>
+            <button type="submit" ng-click="up.submit()">submit</button>
+            <p>{{up.progress}}
+        </form>
+      <label>ResearchPaper: </label><input type="file" ng-model="newItem.projectInfo.researchPaper" />
+    </div>
+    <div class="form-group">
+        <label>School: </label>
+        <input type="text" class="form-control" placeholder="School" ng-model="newItem.projectInfo.school">
+    </div>
+    <div class="form-group">
+        <label>Year: </label>
+        <input type="text" class="form-control" placeholder="Year" ng-model="newItem.projectInfo.year">
+    </div>
+    <div class="form-group">
+        <label>City: </label>
+        <input type="text" class="form-control" placeholder="City" ng-model="newItem.projectInfo.city">
+    </div>
+    <div class="form-group">
+        <label>Video: </label>
+        <input type="text" class="form-control" placeholder="Video" ng-model="newItem.projectInfo.video">
+    </div>
+    </fieldset>
+    </div>
+  <div class="col-md-4">
+    <fieldset>
+      <legend class="text-center">Login</legend>
+      <div class="form-group">
+          <label>Username: </label>
+          <input type="text" class="form-control" placeholder="Username" ng-model="newItem.username">
+      </div>
+      <div class="form-group">
+          <label>Password: </label>
+          <input type="password" class="form-control" placeholder="Password" ng-model="newItem.password">
+      </div>
+  </fieldset>
+    <legend class="text-center">Members</legend>
+    <button class="btn btn-success" ng-click="addMember()">Add member</button>
+    <fieldset ng-repeat="member in newItem.members track by $index">
+        <legend class="text-center">Member {{$index + 1}}</legend>
+        <button class="btn btn-danger" ng-click="removeMember($index)">Remove member</button>
+        <div class="form-group">
+            <label>Name: </label>
+            <input type="text" class="form-control" placeholder="Name" ng-model="newItem.members[$index].name">
+        </div>
+        <div class="form-group">
+            <label>Surname: </label>
+            <input type="text" class="form-control" placeholder="Surname" ng-model="newItem.members[$index].surname">
+        </div>
+          <div class="form-group">
+              <label>Email: </label>
+              <input type="email" class="form-control" placeholder="Email" ng-model="newItem.members[$index].email">
+          </div>
+          <div class="form-group">
+              <label>Phone Number: </label>
+              <input type="text" class="form-control" placeholder="Phone number" ng-model="newItem.members[$index].phone">
+          </div>
+          <div class="form-group">
+              <label>Gender: </label>
+              <div>
+                  <label class="radio-inline">
+                      <input type="radio" value="Male" ng-model="newItem.members[$index].gender"> Male
+                  </label>
+                  <label class="radio-inline">
+                      <input type="radio" value="Female" ng-model="newItem.members[$index].gender"> Female
+                  </label>
+              </div>
+          </div>
+          <div class="form-group">
+            <label>Tip člana:</label>
+            <select class="form-control" ng-model="newItem.members[$index].type">
+                <option value="" disabled>---Choose member type---</option>
+                <option ng-repeat="type in projectObj.memberTypes" ng-value="type.value">{{type.name}}</option>
+            </select>
+          </div>
+    </fieldset>
+  </div>
+  </div>
+  </form>
+  </div>
+</div>
+
+<div class="text-right">
+  <button  class="btn btn-success" ng-click="crud.createItem()" data-dismiss="modal">Submit</button>
+  <button class="btn btn-default" ng-click="crud.cancelNew()" data-dismiss="modal">Cancel</button>
+</div>

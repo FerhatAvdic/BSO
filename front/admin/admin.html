@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="bsoAdmin">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Admin Board</title>
+
+  <link href="common/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type='text/css'>
+  <link href="admin/css/bootstrap-yeti.min.css" rel="stylesheet" type='text/css'>
+  <link href="common/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+  <link href="common/css/sidebar.css" rel="stylesheet" type='text/css'>
+    <link href="admin/css/style.css" rel="stylesheet" type='text/css'>
+
+  <script src="common/vendor/jquery/jquery-3.1.1.min.js"></script>
+  <!-- Bootstrap Core JavaScript -->
+  <script src="common/vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="common/libs/sidebar.js"></script>
+  <script src="common/libs/angular.min.js"></script>
+
+
+  <script src="common/libs/angular-route.min.js"></script>
+  <script src="common/libs/angular-ui-router.min.js"></script>
+  <script src="common/libs/angular-messages.min.js"></script>
+  <script src="common/libs/ngStorage.min.js"></script>
+  <script src="common/libs/angular-jwt.min.js"></script>
+  <script src="common/libs/ng-file-upload.min.js"></script>
+  <script src="common/libs/ng-file-upload-shim.min.js"></script>
+
+  <script src="admin/app.js"></script>
+  <script src="admin/services/authService.js"></script>
+  <script src="admin/services/dataService.js"></script>
+  <script src="admin/services/crudService.js"></script>
+  <script src="admin/controllers/adminloginController.js"></script>
+  <script src="admin/controllers/dashboardController.js"></script>
+  <script src="admin/controllers/competitionsController.js"></script>
+  <script src="admin/controllers/projectsController.js"></script>
+  <script src="admin/controllers/categoriesController.js"></script>
+  <script src="admin/controllers/judgesController.js"></script>
+  <script src="admin/controllers/criteriaController.js"></script>
+  <script src="admin/controllers/navController.js"></script>
+
+
+</head>
+<body>
+      <ui-view></ui-view>
+
+</body>
+</html>

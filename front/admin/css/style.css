@@ -1,0 +1,64 @@
+
+.crud-wrap{
+  margin: 30px 0;
+}
+.fixed{
+  position: relative;
+  }
+@media(min-width:796px){
+  .fixed{
+    position: fixed;
+    }
+}
+
+  .no-padding{
+  padding: 0;
+}
+
+.sidenav{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.sidenav li a{
+  display: block;
+  padding: 15px 0px;
+  font-size: 14px;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  border-bottom: 1px solid #747d87;
+  font-weight: 600;
+}
+.sidenav li:first-child a{
+  border-top:1px solid #747d87;
+}
+.sidenav li a:hover{
+  background: #747d87;
+  cursor: pointer;
+}
+
+.pos-bottom{
+  position: fixed;
+  bottom: 0; left: 0;
+}
+.sharp-edges{
+  border-radius: 0;
+}
+.gray{
+  background: #5a6168;
+  color: white;
+}
+.gray:hover{
+  background: #747d87;
+  color:white;
+}
+.sidebar .btn{
+  padding: 15px 0px;
+  font-weight:600;
+  border-top: 1px solid #747d87;
+}
+
+.sidenav-top{
+  padding: 50px 0;
+}

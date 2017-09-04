@@ -1,0 +1,52 @@
+<ion-view view-title="adminpanel">
+  <ion-content>
+
+    <nav class="judge-nav assertive">
+      <h4>Progress</h4>
+      <button class="btn-clear white" id="logout" ng-click="logout()">Log out</button>
+    </nav>
+
+
+    <div class="judge-body">
+      <div class="list list-inset">
+        <label class="item item-input">
+          <i class="icon ion-search placeholder-icon"></i>
+          <input type="text" placeholder="Search" ng-model="searchList.project.projectInfo.title">
+        </label>
+      </div>
+      <div class="card">
+        <div class="item item-divider text-center">
+          Graded Projects
+        </div>
+        <div class="item item-text-wrap text-center">
+          {{progress.graded}} / {{progress.total}}
+        </div>
+
+      </div>
+      <div class="table-responsive">
+      <table class="table table-stripped">
+        <thead>
+            <tr>
+              <th>Title</th>
+              <th>Judge</th>
+              <th class="text-right">Total Pts</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="grade in grades| orderBy:'project.projectInfo.title' |filter:searchList">
+            <td>{{grade.project.projectInfo.title}}</td>
+            <td>{{grade.judge.name}} {{grade.judge.surname}}</td>
+            <td class="text-right"ng-repeat="ev in grade.evaluation" ng-if="ev.nameEn==='Total'">{{ev.value}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+
+    <div class="tabs">
+    <a href="#admin/panel" class="tab-item">Proggress</a>
+      <a href="#/admin/projects" class="tab-item">All Projects</a>
+    </div>
+
+  </ion-content>
+</ion-view>

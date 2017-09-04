@@ -1,0 +1,61 @@
+<h1>Projects</h1>
+  <div class="row">
+    <div class="col-md-3">
+      <select class="form-control text-center" ng-model="selectedCom._id" ng-change="crud.listItems()">
+          <option value="" disabled>---Choose Competition---</option>
+          <option ng-repeat="com in comslight track by com._id" ng-value="com._id">{{com.detailsEn.title}}</option>
+      </select>
+    </div>
+    <div class="col-md-9">
+      <div class="text-right"><a class="btn btn-success" ng-click="crud.startNew(newItem)">Add Project</a></div>
+    </div>
+  </div>
+<div class="table-responsive">
+<table class="table table-hover">
+<thead>
+    <th>
+        Title
+    </th>
+    <th>
+        Category
+    </th>
+    <th>
+        Abstract
+    </th>
+    <th>
+        School
+    </th>
+    <th>
+        City
+    </th>
+    <th class="text-right">
+        Options
+    </th>
+</thead>
+<tbody>
+    <tr ng-repeat="project in list">
+        <div >
+            <td>
+                {{project.projectInfo.title}}
+            </td>
+            <td>
+                {{project.projectInfo.categoryId}}
+            </td>
+            <td>
+                {{project.projectInfo.abstract}}
+            </td>
+            <td>
+                {{project.projectInfo.school}}
+            </td>
+            <td>
+                {{project.projectInfo.city}}
+            </td>
+            <td class="text-right">
+                <button class="btn btn-info" ng-click="crud.startEdit(project)" >Edit</button>
+                <button class="btn btn-danger" ng-click="crud.deleteItem(project._id)">Delete</button>
+            </td>
+        </div>
+    </tr>
+  </tbody>
+</table>
+</div>

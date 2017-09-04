@@ -1,0 +1,45 @@
+
+<div class="col-md-offset-3 col-md-6">
+  <h2>Editing Criteria</h2>
+  <!--<div class="row">
+      <button class="btn btn-success pull-right" ng-click="addCriterion()">Add criterion</button>
+  </div>-->
+  <form class="row">
+    <fieldset>
+      <!--ng-repeat="criterion in editingItem.criteria"-->
+      <div >
+        <!--<button class="btn btn-danger" ng-click="removeCriterion($index)">Remove criterion</button>-->
+        <div class="form-group">
+            <label>Name BS: </label>
+            <input type="text" class="form-control" placeholder="Name" ng-model="editingItem.nameBs">
+        </div>
+        <div class="form-group">
+            <label>Name EN: </label>
+            <input type="text" class="form-control" placeholder="Name" ng-model="editingItem.nameEn">
+        </div>
+        <div class="form-group">
+            <label>Maximum value: </label>
+            <input type="number" class="form-control" placeholder="#" ng-model="editingItem.max">
+        </div>
+      </div>
+    </fieldset>
+
+
+    <h3>Assign Competitions</h1>
+    <select class="form-control text-center" ng-model="selectedCom._id">
+        <option value="" disabled>---Choose Competition---</option>
+        <option ng-repeat="com in $parent.comslight track by com._id" ng-value="com._id">{{com.detailsEn.title}}</option>
+    </select>
+    <button  class="btn btn-success" ng-click="assignCompetition()">Assign</button>
+    <div ng-repeat="competitionId in editingItem.competitionIds track by $index">
+      {{competitionId}}
+      <button class="btn btn-danger" ng-click="removeCompetition($index)">Remove</button>
+    </div>
+  </form>
+
+
+
+
+  <div class="text-right"><button  class="btn btn-success" ng-click="crud.updateItem()">Submit</button>
+  <button class="btn btn-default" ng-click="crud.cancelEdit()" data-dismiss="modal">Cancel</button></div>
+</div>

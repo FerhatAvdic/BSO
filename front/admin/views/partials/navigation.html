@@ -1,0 +1,23 @@
+<div class="col-xs-12 col-sm-4 col-md-2 sidebar sidebar-left sidebar-open sidebar-md-show no-padding fixed">
+  <div class="sidenav-top">
+    <h3 class="text-center">IBU Olympiads</h1>
+    <p class="text-center">Welcome to admin board</p>
+  </div>
+  <div ng-if="false">
+    <select class="form-control text-center" ng-model="selectedCom" ng-change="logMe(selectedCom)">
+        <option value="" disabled>---Choose Competition---</option>
+        <option ng-repeat="com in comslight track by com._id" ng-value="com._id">{{com.detailsEn.title}}</option>
+    </select>
+  </div>
+  <ul class="sidenav">
+    <li><a ui-sref=".grades">Grades</a></li>
+    <li><a ui-sref=".competitions" >Competitions</a></li>
+    <li><a ui-sref=".categories">Categories</a></li>
+    <li><a ui-sref=".criteria">Criteria</a></li>
+    <li><a ui-sref=".projects" >Projects</a></li>
+    <li><a ui-sref=".judges">Judges</a></li>
+  </ul>
+  
+  <button class="btn btn-block pos-bottom sharp-edges gray" ng-click="logout()">Log out</button>
+
+</div>

@@ -1,0 +1,63 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="container">
+        <h1>Grades</h1>
+          <div class="row">
+            <div class="col-md-3">
+              <select class="form-control text-center" ng-model="selectedCom._id" ng-change="getGrades()">
+                  <option value="" disabled>---Choose Competition---</option>
+                  <option ng-repeat="com in comslight track by com._id" ng-value="com._id">{{com.detailsEn.title}}</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <select class="form-control text-center" ng-model="selectedCat._id" ng-change="selectCat(selectedCat._id)">
+                  <option value="" disabled>---Choose Category---</option>
+                  <option ng-value="" >Show All</option>
+                  <option ng-repeat="cat in categories track by cat._id" ng-value="cat._id">{{cat.detailsEn.name}}</option>
+              </select>
+            </div>
+            <div class="col-md-2">
+              <input type="text" class="form-control" placeholder="search title"ng-model="searchTitle.project.projectInfo.title"/>
+            </div>
+            <div class="col-md-2">
+              <input type="text" class="form-control" placeholder="search school"ng-model="searchTitle.project.projectInfo.school"/>
+            </div>
+            <div class="col-md-2">
+              <select class="form-control text-center" ng-model="gradeFilter.nameEn">
+                  <option value="" disabled>---Filter by grade---</option>
+                  <option value="Total">Total</option>
+                  <option ng-repeat="cri in criteria track by cri._id" ng-value="cri.nameEn">{{cri.nameEn}}</option>
+              </select>
+            </div>
+
+          </div>
+        <div class="table-responsive">
+        <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                School
+            </th>
+            <th class="text-right">
+              Grade
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="grade in grades | orderBy:'project.projectInfo.title' |filter:searchTitle | filter: searchSchool | filter: filterCat">
+                <td>{{grade.project.projectInfo.title}}</td>
+                <td>{{grade.project.projectInfo.school}}@{{grade.project.projectInfo.city}}</td>
+                <td class="text-right" ng-repeat="ev in grade.evaluation" ng-if="ev.nameEn===gradeFilter.nameEn">{{ev.value}}</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

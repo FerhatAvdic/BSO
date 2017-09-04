@@ -1,0 +1,33 @@
+
+
+<ion-view view-title="adminviewproject">
+  <ion-content>
+
+    <nav class="judge-nav assertive">
+      <h4>Abstract</h4>
+      <button class="btn-clear white" id="logout" ng-click="logout()">Log out</button>
+      <button class="btn-clear white" id="backbtn" ng-click="location('/admin/projects')">Back</button>
+    </nav>
+
+
+    <div class="judge-body">
+        <div class="card">
+          <div class="item item-divider text-center">
+            {{viewProject.projectInfo.title}}
+          </div>
+          <div class="item item-text-wrap">
+            <p>
+             {{viewProject.projectInfo.abstract}}
+            </p>
+          </div>
+        </div>
+    </div>
+
+    <div class="tabs">
+        <a href="#admin/panel" class="tab-item">Proggress</a>
+      <a href="#admin/projects" class="tab-item">All Projects</a>
+
+    </div>
+
+  </ion-content>
+</ion-view>
