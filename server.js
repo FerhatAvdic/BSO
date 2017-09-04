@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var mongoose = require("mongoose");
 const cors = require('cors');
 const passport = require('passport');
-const config = require('../back/config/database');
+const config = require('./config/database');
 
 mongoose.connect(config.database)
 mongoose.connection.on('connected', () => {
@@ -30,47 +30,47 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-require('../back/config/passport')(passport);
-require('../back/config/projectPassport')(passport);
-require('../back/config/judgePassport')(passport);
+require('./config/passport')(passport);
+require('./config/projectPassport')(passport);
+require('./config/judgePassport')(passport);
 
-const users = require('../back/routes/users');
+const users = require('./routes/users');
 app.use('/admin', users);
 
-var projects     = require('../back/routes/projects');
+var projects     = require('./routes/projects');
 app.use('/api', projects);
-var competitions = require('../back/routes/competitions');
+var competitions = require('./routes/competitions');
 app.use('/api', competitions);
-var categories = require('../back/routes/categories');
+var categories = require('./routes/categories');
 app.use('/api', categories);
-var judges = require('../back/routes/judges');
+var judges = require('./routes/judges');
 app.use('/api', judges);
-var criteria = require('../back/routes/criteria');
+var criteria = require('./routes/criteria');
 app.use('/api', criteria);
-var grades = require('../back/routes/grades');
+var grades = require('./routes/grades');
 app.use('/api', grades);
 // Define a prefix for all routes
 // Can define something unique like MyRestAPI
 // We'll just leave it so all routes are relative to '/'
 
-/*var routes     = require('../back/routes/routes');
+/*var routes     = require('../routes/routes');
 app.use('/api/', routes);*/
 
-app.use('/', express.static("../front"));
-app.use('/administrator/', express.static("../front"));
+app.use('/', express.static("./www"));
+app.use('/administrator/', express.static("./www"));
 
 
 
 app.get('/',function(request,response){
-       response.sendFile(path.resolve(__dirname + '/../front/client/index.html'));
+       response.sendFile(path.resolve(__dirname + '/./www/client/index.html'));
 });
 
 app.get('/administrator/', function(req, res){
-     res.sendFile(path.join(__dirname + '/../front/admin/admin.html'));
+     res.sendFile(path.join(__dirname + '/./www/admin/admin.html'));
 });
 
 app.get('/administrator/dashboard', passport.authenticate('jwt', {session:false}),function(req, res){
-     res.sendFile(path.join(__dirname + '/../front/admin/views/dashboard.html'));
+     res.sendFile(path.join(__dirname + '/./www/admin/views/dashboard.html'));
 });
 
 
