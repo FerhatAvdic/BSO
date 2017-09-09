@@ -8,7 +8,8 @@
     function Service($http, $localStorage, $window) {
         var service = {};
         var api = '/admin/';
-        var domain = 'http://localhost:8080';
+        //var domain = 'http://localhost:8080';
+	var domain ='https://bosnian-science-olympiad.herokuapp.com';
         service.Login = Login;
         service.Logout = Logout;
 

@@ -6,7 +6,8 @@
     bsoApp.factory("dataService", ['$http', '$rootScope', '$q', function ($http, $rootScope, $q) {
 
         //var source = "/api/";
-        var source = 'http://localhost:8080/api/';
+        //var source = 'http://localhost:8080/api/';
+	var source ='https://bosnian-science-olympiad.herokuapp.com/api/';
 
         return {
 
