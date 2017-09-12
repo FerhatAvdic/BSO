@@ -21,7 +21,7 @@
                     crud.editActive = false;
                     crud.listActive = false;
                     crud.deleteActive= false;
-                    $scope.newItem = crud.object
+                    $scope.newItem = angular.copy(crud.object);
                 },
                 cancelNew: function(){
                     crud.listToActive();
@@ -94,6 +94,9 @@
                             console.log('Error: ' + res.data);
                         }
                     });
+                },
+                validateNew: function(){
+                    
                 }
             }
         var competitionObj = {

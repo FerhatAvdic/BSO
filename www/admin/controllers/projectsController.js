@@ -6,6 +6,14 @@
     bsoApp.controller("projectsController", ['$rootScope','$scope','$http','$location','authService','dataService','$window','Upload',
     function ($rootScope, $scope, $http,$location,authService,dataService, $window, Upload) {
 
+
+    $scope.selectedCat={
+        _id: null,
+        detailsEn:{
+        _id:null,
+        title:null
+        }
+    };
       var crud = {
               newActive: false,
               editActive: false,
@@ -175,6 +183,7 @@
                   if (res.status === 200) {
                       $scope.comslight = res.data
                       $scope.selectedCom._id = $scope.comslight[0]._id;
+                      $scope.getActiveCategories();
                       crud.listItems();
                       console.log("comslight",$scope.comslight);
                   }
@@ -197,33 +206,49 @@
             });
         };
 
-      $scope.up = {};
-       $scope.up.submit = function(){ //function to call on form submit
-           console.log( $scope.up.file);
-           if ($scope.up.upload_form.file.$valid && $scope.up.file) { //check if from is valid
-               $scope.up.upload($scope.up.file); //call upload function
-           }
-       }
-       $scope.up.upload = function (file) {
-           Upload.upload({
-               url: '/api/upload', //webAPI exposed to upload the file
-               data:{file:file} //pass file as data, should be user ng-model
-           }).then(function (resp) { //upload function returns a promise
-               if(resp.data.error_code === 0){ //validate success
-                   $window.alert('Success ' /*+ resp.config.data.file.name */+ 'uploaded. Response: ');
-               } else {
-                   $window.alert('an error occured');
-               }
-           }, function (resp) { //catch error
-               console.log('Error status: ' + resp.status);
-               $window.alert('Error status: ' + resp.status);
-           }, function (evt) {
-               console.log(evt);
-               var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-               console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
-               $scope.up.progress = 'progress: ' + progressPercentage + '% '; // capture upload progress
-           });
-       };
+        $scope.up = {};
+            $scope.up.submit = function(){ //function to call on form submit
+                console.log("file: ", $scope.up.file);
+                if ($scope.up.upload_form.file.$valid && $scope.up.file) { //check if from is valid
+                    $scope.up.upload($scope.up.file); //call upload function
+                }else{
+                    $scope.fileUploaded = false;
+                }
+            }
+            $scope.up.upload = function (file) {
+                Upload.upload({
+                    //url: 'http://localhost:8080/api/upload', //webAPI exposed to upload the file
+                    url: '/api/upload', //webAPI exposed to upload the file
+                    data:{file:file} //pass file as data, should be user ng-model
+                }).then(function (resp) { //upload function returns a promise
+                    console.log("resp.data:", resp.data);
+                    if(resp.data.error_code === 0){ //validate success
+                        //$window.alert('Success ' /*+ resp.config.data.file.name */+ 'uploaded. Response: ');
+                        $scope.fileUploaded = true;
+                        crud.createItem();
+                    } else {
+                        $window.alert('an error occured');
+                    }
+                }, function (resp) { //catch error
+                    console.log('Error status: ' + resp.status);
+                    $window.alert('Error status: ' + resp.status);
+                }, function (evt) {
+                    console.log(evt);
+                    var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                    console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+                    $scope.up.progress = 'progress: ' + progressPercentage + '% '; // capture upload progress
+                });
+            };
+
+            $scope.selectCat = function(id){
+                if (id===null) $scope.filterCat = undefined;
+                else
+                $scope.filterCat={
+                        projectInfo: {
+                            categoryId:id
+                        }
+                };
+            };
 
    }]);
 }());

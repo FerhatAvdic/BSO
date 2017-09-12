@@ -1,6 +1,6 @@
 (function () {
 
-    var bsoAdmin = angular.module('bsoAdmin', ['ui.router','ngStorage','ngMessages', 'angular-jwt','ngFileUpload']);
+    var bsoAdmin = angular.module('bsoAdmin', ['ui.router','ngStorage','ngMessages', 'angular-jwt','ngFileUpload', 'ngPrint']);
 
     bsoAdmin.config(function ($stateProvider, $urlRouterProvider) {
         /*$routeProvider

@@ -1,6 +1,8 @@
 
 <h1>Judges</h1>
 <div class="text-right">
+  <button class="btn btn-primary pull-left" ng-print print-element-id="printCodes"><i class="fa fa-print"></i> Tickets</button>
+  <button class="btn btn-default pull-left" ng-click="toggleTickets()">Toggle Tickets</button>
   <button class="btn btn-default" ng-click="startCategories()">Assign Categories</button>
   <button class="btn btn-warning" ng-click="distributeTokens()">Distribute Tokens</button>
   <button class="btn btn-success" ng-click="crud.startNew()">Add Judge</button>
@@ -48,4 +50,11 @@
         </tr>
       </tbody>
     </table>
+  </div>
+
+  <div class="row" id="printCodes" ng-show="tickets.show">
+    <div class="col-xs-12 col-sm-6 col-md-3" id="ticket-item" ng-repeat="judge in list">
+        <div><strong>Jury Member:</strong> {{judge.name}} {{judge.surname}}</div>
+        <div><strong>Access Code:</strong> {{judge.code}}</div>
+    </div>
   </div>

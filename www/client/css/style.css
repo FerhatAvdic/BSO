@@ -16,3 +16,7 @@
 body{
     padding-top: 70px;
 }
+
+.simple-wrap{
+  padding: 50px; 0;
+}

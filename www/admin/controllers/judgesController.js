@@ -3,6 +3,11 @@
     var bsoAdmin = angular.module("bsoAdmin");
     bsoAdmin.controller("judgesController", ['$scope','$http','dataService', function ($scope, $http, dataService) {
 
+      $scope.tickets= {"show": false};
+      $scope.toggleTickets = function(){
+        $scope.tickets.show = !$scope.tickets.show;
+      };
+
         var crud = {
                 newActive: false,
                 editActive: false,

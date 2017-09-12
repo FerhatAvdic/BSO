@@ -25,7 +25,20 @@
       <label>Abstract: </label><textarea class="form-control" rows="10" type="text" ng-model="editingItem.projectInfo.abstract"></textarea>
     </div>
     <div class="form-group">
-      <label>ResearchPaper: </label><input type="file" ng-model="editingItem.projectInfo.researchPaper" />
+      <div class="form-group">
+        <label>ResearchPaper: </label>
+        <input
+           type="file"
+           ngf-select
+           ng-model="up.file"
+           name="file"
+           ngf-pattern="'application/msword, application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document'"
+           accept="application/msword, application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+           ngf-max-size="20MB"
+           />
+        <i ng-show="up.upload_form.file.$error.required">*required</i><br>
+        <i ng-show="up.upload_form.file.$error.maxSize">File too large{{up.file.size / 1000000|number:1}}MB: max 20M</i>
+      </div>
     </div>
     <div class="form-group">
         <label>School: </label>

@@ -6,6 +6,7 @@
       <div class="form-group">
           <label>Title: </label>
           <input type="text" class="form-control" placeholder="Title" ng-model="newItem.detailsBs.title">
+
       </div>
       <div class="form-group">
            <label>Description: </label>
@@ -36,6 +37,7 @@
     <div class="form-group">
         <label>Title: </label>
         <input type="text" class="form-control" placeholder="Title" ng-model="newItem.detailsEn.title">
+        <div class="red" ng-if="validate.title">* Required Field</div>
     </div>
     <div class="form-group">
          <label>Description: </label>

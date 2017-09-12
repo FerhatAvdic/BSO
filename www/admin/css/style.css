@@ -22,11 +22,10 @@
 }
 .sidenav li a{
   display: block;
-  padding: 15px 0px;
+  padding: 15px 50px;
   font-size: 14px;
   color: white;
   text-decoration: none;
-  text-align: center;
   border-bottom: 1px solid #747d87;
   font-weight: 600;
 }
@@ -61,4 +60,16 @@
 
 .sidenav-top{
   padding: 50px 0;
+}
+
+
+#ticket-item{
+  border: 1px solid black;
+  padding: 15px;
+}
+#printCodes{
+
+}
+.simple-wrap{
+  padding: 50px; 0;
 }

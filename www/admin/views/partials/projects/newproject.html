@@ -18,32 +18,25 @@
           <div class="form-group">
             <select class="form-control" ng-model="newItem.projectInfo.categoryId">
               <option value="" disabled>---Choose category---</option>
-              <option ng-repeat="category in categories" ng-value="category._id">{{category.detailsBs.name}}</option>
+              <option ng-repeat="category in categories" ng-value="category._id">{{category.detailsEn.name}}</option>
           </select>
         </div>
     <div class="form-group">
       <label>Abstract: </label><textarea class="form-control" rows="10" type="text" ng-model="newItem.projectInfo.abstract"></textarea>
     </div>
     <div class="form-group">
-      <form name="up.upload_form">
-                Single Image with validations
-            <input
-               type="file"
-               ngf-select
-               ng-model="up.file"
-               name="file"
-               ngf-pattern="'application/msword, application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document'"
-               accept="application/msword, application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-               ngf-max-size="20MB"
-               />
-            Image thumbnail: <img style="width:100px;" ngf-thumbnail="up.file || '/thumb.jpg'"/>
-            <i ng-show="up.upload_form.file.$error.required">*required</i><br>
-            <i ng-show="up.upload_form.file.$error.maxSize">File too large
-            {{up.file.size / 1000000|number:1}}MB: max 20M</i>
-            <button type="submit" ng-click="up.submit()">submit</button>
-            <p>{{up.progress}}
-        </form>
-      <label>ResearchPaper: </label><input type="file" ng-model="newItem.projectInfo.researchPaper" />
+      <label>ResearchPaper: </label>
+      <input
+         type="file"
+         ngf-select
+         ng-model="up.file"
+         name="file"
+         ngf-pattern="'application/msword, application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document'"
+         accept="application/msword, application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+         ngf-max-size="20MB"
+         />
+      <i ng-show="up.upload_form.file.$error.required">*required</i><br>
+      <i ng-show="up.upload_form.file.$error.maxSize">File too large{{up.file.size / 1000000|number:1}}MB: max 20M</i>
     </div>
     <div class="form-group">
         <label>School: </label>
@@ -122,6 +115,6 @@
 </div>
 
 <div class="text-right">
-  <button  class="btn btn-success" ng-click="crud.createItem()" data-dismiss="modal">Submit</button>
+  <button  class="btn btn-success" ng-click="up.submit()" data-dismiss="modal">Submit</button>
   <button class="btn btn-default" ng-click="crud.cancelNew()" data-dismiss="modal">Cancel</button>
 </div>
